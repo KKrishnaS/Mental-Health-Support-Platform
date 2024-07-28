@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Support</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        #landing-page, #home-page {
+            display: none;
+        }
+        #landing-page.active, #home-page.active {
+            display: block;
+        }
+        #landing-page {
+            text-align: center;
+            padding: 50px;
+        }
+        #landing-page img {
+            max-width: 100%;
+            height: auto;
+        }
+        #landing-page button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="landing-page" class="active">
+    <img src=".\Static\Logo.png.png" alt="Mental Health Support">
+    <button onclick="navigateToHomePage()">Enter Site</button>
+</div>
+
+<div id="home-page">
+    <header>
+        <h1>Mental Health Support</h1>
+    </header>
+
+    <nav>
+        <a href="#conditions">Mental Health Conditions</a>
+        <a href="#treatments">Treatment Options</a>
+        <a href="#coping">Coping Strategies</a>
+        <a href="#chat">Chat Support</a>
+        <a href="#therapists">Professional Therapists</a>
+    </nav>
+
+    <main>
+        <section id="conditions">
+            <h2>Mental Health Conditions</h2>
+            <ul>
+                <li><a href="https://www.nhs.uk/mental-health/conditions/depression-in-adults/symptoms/" target="_blank">Depression</a></li>
+                <li><a href="https://www.nhs.uk/mental-health/conditions/generalised-anxiety-disorder/" target="_blank">Anxiety Disorders</a></li>
+                <li><a href="https://www.nhs.uk/mental-health/conditions/bipolar-disorder/" target="_blank">Bipolar Disorder</a></li>
+                <li><a href="https://www.nhs.uk/mental-health/conditions/schizophrenia/" target="_blank">Schizophrenia</a></li>
+                <li><a href="https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/feelings-and-symptoms/stress/" target="_blank">Obsessive-Compulsive Disorder (OCD)</a></li>
+            </ul>
+        </section>
+
+        <section id="chat">
+            <h2>Chat Support</h2>
+            <p>Connect with our support team through live chat.</p>
+            <form id="chat-form">
+                <input type="text" name="message" placeholder="Enter your message...">
+                <button type="submit">Send</button>
+            </form>
+            <p id="chat-response"></p>
+        </section>
+
+        <section id="therapists">
+            <h2>Professional Therapists</h2>
+            <div id="therapists-list"></div>
+        </section>
+
+        <section id="treatments">
+            <h2>Treatment Options</h2>
+            <div id="treatment-options"></div>
+        </section>
+
+        <section id="coping">
+            <h2>Coping Strategies</h2>
+            <div id="coping-strategies"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mental Health Support. All rights reserved.</p>
+    </footer>
+</div>
+
+<script>
+    function navigateToHomePage() {
+        document.getElementById('landing-page').classList.remove('active');
+        document.getElementById('home-page').classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Treatment options data
+        const treatmentOptions = {"Depression": ["Cognitive Behavioral Therapy", "Medication", "Exercise"], "Anxiety Disorders": ["Exposure Therapy", "Medication", "Mindfulness Meditation"], "Bipolar Disorder": ["Mood Stabilizers", "Psychotherapy", "Lifestyle Changes"], "Schizophrenia": ["Antipsychotic Medication", "Cognitive Behavioral Therapy", "Support Groups"], "Obsessive-Compulsive Disorder (OCD)": ["Cognitive Behavioral Therapy", "Medication", "Exposure and Response Prevention"]};
+
+        // Coping strategies data
+        const copingStrategies = {"articles": [{"title": "Understanding Anxiety Disorders", "link": "https://newsinhealth.nih.gov/2016/03/understanding-anxiety-disorders"}, {"title": "Coping with Depression", "link": "https://www.helpguide.org/articles/depression/coping-with-depression.htm"}, {"title": "Managing Bipolar Disorder", "link": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/bipolar-disorder/self-managing-bipolar/"}], "videos": [{"title": "Guided Meditation", "link": "https://www.youtube.com/watch?v=y8LIbeKQ60U"}, {"title": "Breathing Exercises", "link": "https://www.youtube.com/watch?v=I-OugebxKWo"}], "podcasts": [{"title": "Mental Health Matters", "link": "https://www.youtube.com/playlist?list=PLV9WJDAawyhbnt0K3cZBGL4-WYulolUP_"}, {"title": "Calm Minds", "link": "https://www.youtube.com/@calmmindpodcast/podcasts"}], "downloads": [{"title": "Self-Care Checklist", "link": "https://www.manchestermind.org/news/self-care/self-care-checklist/"}, {"title": "Anxiety Workbook", "link": "https://mshoop.org/wp-lib/wp-content/uploads/2022/02/The-Anxiety-Skills-Workbook.pdf"}]};
+
+        // Professional therapists data
+        const therapists = [{"name": "Dr. John Doe", "specialization": "Cognitive Behavioral Therapy", "contact": "johndoe@example.com"}, {"name": "Dr. Jane Smith", "specialization": "Mindfulness Therapy", "contact": "janesmith@example.com"}];
+
+        // Populate treatment options
+        const treatmentOptionsDiv = document.getElementById('treatment-options');
+        for (let condition in treatmentOptions) {
+            let section = document.createElement('section');
+            let title = document.createElement('h3');
+            title.textContent = condition;
+            section.appendChild(title);
+            let ul = document.createElement('ul');
+            treatmentOptions[condition].forEach(option => {
+                let li = document.createElement('li');
+                li.textContent = option;
+                ul.appendChild(li);
+            });
+            section.appendChild(ul);
+            treatmentOptionsDiv.appendChild(section);
+        }
+
+        // Populate coping strategies
+        const copingStrategiesDiv = document.getElementById('coping-strategies');
+        for (let category in copingStrategies) {
+            let section = document.createElement('section');
+            let title = document.createElement('h3');
+            title.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+            section.appendChild(title);
+            let ul = document.createElement('ul');
+            copingStrategies[category].forEach(item => {
+                let li = document.createElement('li');
+                let a = document.createElement('a');
+                a.href = item.link;
+                a.target = '_blank';
+                a.textContent = item.title;
+                li.appendChild(a);
+                ul.appendChild(li);
+            });
+            section.appendChild(ul);
+            copingStrategiesDiv.appendChild(section);
+        }
+
+        // Populate therapists
+        const therapistsListDiv = document.getElementById('therapists-list');
+        therapists.forEach(therapist => {
+            let p = document.createElement('p');
+            p.textContent = therapist.name + " - " + therapist.specialization + " - " + therapist.contact;
+            therapistsListDiv.appendChild(p);
+        });
+
+        // Handle chat form submission
+        document.getElementById('chat-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let userMessage = event.target.elements.message.value;
+            let responseMessage = chat(userMessage);
+            document.getElementById('chat-response').textContent = responseMessage;
+        });
+
+        function chat(userMessage) {
+            return "Our support team will get back to you shortly.";
+        }
+    });
+</script>
+
+</body>
+</html>
